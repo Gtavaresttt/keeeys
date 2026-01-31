@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Everest Keys</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#d4af37;
+  --gold-soft:#f5d76e;
+  --black:#0b0b0b;
+  --card:#111;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+  background:radial-gradient(circle at top,#111,#000 70%);
+  color:#fff;
+}
+
+header{
+  text-align:center;
+  padding:50px 20px;
+}
+
+header h1{
+  font-size:3rem;
+  color:var(--gold);
+  letter-spacing:2px;
+  text-shadow:0 0 20px rgba(212,175,55,.5);
+}
+
+header p{
+  margin-top:10px;
+  color:#bbb;
+}
+
+.container{
+  max-width:1400px;
+  margin:auto;
+  padding:30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:linear-gradient(145deg,#0f0f0f,#161616);
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:.4s;
+  box-shadow:0 20px 40px rgba(0,0,0,.7);
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  border:1px solid rgba(212,175,55,.3);
+  pointer-events:none;
+}
+
+.card:hover{
+  transform:translateY(-10px) rotateX(6deg);
+  box-shadow:0 30px 60px rgba(212,175,55,.25);
+}
+
+.card img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  background:#000;
+}
+
+.card-content{
+  padding:15px;
+  text-align:center;
+}
+
+.card-content h3{
+  font-size:.95rem;
+  min-height:44px;
+}
+
+.price{
+  margin:12px 0;
+  font-size:1.2rem;
+  font-weight:700;
+  color:var(--gold-soft);
+}
+
+.buy{
+  display:inline-block;
+  padding:12px 20px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+  color:#000;
+  border-radius:30px;
+  font-weight:700;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.buy:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px rgba(212,175,55,.6);
+}
+footer{
+  text-align:center;
+  padding:40px 10px;
+  color:#777;
+  font-size:.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>EVEREST KEYS</h1>
+  <p>Jogos Originais • Ativação na sua Steam • R$19,90</p>
+</header>
+
+<div class="container" id="games"></div>
+
+<footer>
+  © Everest Keys — Atendimento direto no WhatsApp
+</footer>
+
+<script>
+const whatsapp = "https://wa.me/5562982553620?text=Quero%20comprar%20o%20jogo%20";
+
+const games = [
+"Age of Empires II: Definitive Edition",
+"ARK: Survival Ascended",
+"Assetto Corsa",
+"Balatro",
+"Baldur's Gate 3",
+"Baldur's Gate II: Enhanced Edition",
+"Baldur's Gate: Dark Alliance",
+"Baldur's Gate: Enhanced Edition",
+"BeamNG.drive",
+"Borderlands 3",
+"Cities: Skylines",
+"Cities: Skylines II",
+"Clair Obscur: Expedition 33",
+"Contraband Police",
+"Crime Scene Cleaner",
+"Crusader Kings III",
+"Cyberpunk 2077",
+"DARK SOULS II",
+"DARK SOULS III",
+"DARK SOULS REMASTERED",
+"DAVE THE DIVER",
+"Days Gone",
+"Dead Cells",
+"Devil May Cry 5",
+"Dragon Ball Sparking ZERO",
+"Dying Light",
+"Dying Light 2 Stay Human",
+"Elden Ring",
+"Enshrouded",
+"Euro Truck Simulator 2",
+"Factorio",
+"Farming Simulator 22",
+"Fallout 4",
+"Forza Horizon 4",
+"Forza Horizon 5",
+"Ghost of Tsushima",
+"God of War",
+"God of War Ragnarök",
+"Hollow Knight",
+"It Takes Two",
+"Kingdom Come: Deliverance",
+"Lies of P",
+"Marvel's Spider-Man Remastered",
+"Marvel’s Spider-Man Miles Morales",
+"Monster Hunter World",
+"Mortal Kombat 11",
+"No Man's Sky",
+"Palworld",
+"Project Zomboid",
+"Red Dead Redemption 2",
+"Resident Evil Village",
+"Satisfactory",
+"Sekiro Shadows Die Twice",
+"Stardew Valley",
+"Tekken 8",
+"Terraria",
+"The Witcher 3 Wild Hunt",
+"Wallpaper Engine"
+];
+
+const container = document.getElementById("games");
+
+games.forEach(game=>{
+  const img = `https://source.unsplash.com/600x900/?video-game,${encodeURIComponent(game)}`;
+  container.innerHTML += `
+    <div class="card">
+      <img src="${img}" alt="${game}">
+      <div class="card-content">
+        <h3>${game}</h3>
+        <div class="price">R$ 19,90</div>
+        <a class="buy" href="${whatsapp}${encodeURIComponent(game)}" target="_blank">Comprar</a>
+      </div>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
