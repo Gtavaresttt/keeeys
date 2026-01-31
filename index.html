@@ -46,214 +46,190 @@
 
     .top-bar i { color: var(--gold); }
 
-    /* HEADER & LOGO ULTRA PERSONALIZADA */
+    /* HEADER & LOGO 3D ESTILIZADA */
     header {
       text-align: center;
-      padding: 60px 20px 20px;
+      padding: 40px 20px 20px;
     }
 
     .logo-container {
       position: relative;
       display: inline-block;
-      padding: 50px;
+      padding: 40px;
+      perspective: 1000px; /* Efeito 3D */
     }
 
-    /* Montanha Gigante Personalizada */
+    /* Montanha de Fundo */
     .mountain-bg {
       position: absolute;
-      top: 40%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 200px;
-      background: linear-gradient(to bottom, #333, #000);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 160px;
+      color: rgba(255, 255, 255, 0.03);
       z-index: 0;
-      filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.1));
-      opacity: 0.5;
+      filter: blur(2px);
     }
 
     .logo-box {
       position: relative;
-      padding: 30px 60px;
-      background: rgba(0, 0, 0, 0.85);
-      border-radius: 2px;
-      z-index: 2;
+      padding: 25px 50px;
+      background: rgba(5, 5, 5, 0.9);
+      border-radius: 4px;
+      z-index: 1;
       overflow: hidden;
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      box-shadow: 0 0 40px rgba(0,0,0,1), 0 0 20px rgba(212, 175, 55, 0.1);
-      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 0 50px rgba(0,0,0,1);
     }
 
-    /* Linhas Douradas Dinâmicas que atravessam */
+    /* Linhas Douradas Giratórias */
     .logo-box::before {
       content: '';
       position: absolute;
-      top: -100%;
-      left: -100%;
-      width: 300%;
-      height: 300%;
-      background: conic-gradient(
-        transparent, 
-        rgba(212, 175, 55, 0.1), 
-        var(--gold), 
-        var(--gold-light), 
-        transparent
-      );
-      animation: rotate-border 3s linear infinite;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(transparent, transparent, var(--gold), transparent);
+      animation: rotate-border 4s linear infinite;
       z-index: -1;
     }
 
-    /* Brilho extra passando por cima do nome */
     .logo-box::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
-      transform: skewX(-25deg);
-      animation: sweep 4s infinite;
-      z-index: 3;
-    }
-
-    .inner-dark {
-      position: absolute;
-      inset: 3px;
-      background: #050505;
+      inset: 2px;
+      background: #000;
+      border-radius: 2px;
       z-index: -1;
     }
 
     .logo {
-      font-size: clamp(30px, 10vw, 50px);
+      font-size: clamp(28px, 10vw, 45px);
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 10px;
-      background: linear-gradient(to bottom, #fcf6ba 0%, #bf953f 40%, #b38728 60%, #aa771c 100%);
+      letter-spacing: 8px;
+      background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 2px rgba(0,0,0,0.8));
+      background-size: 200% auto;
+      animation: shine 3s infinite linear;
       position: relative;
-      z-index: 4;
     }
 
     @keyframes rotate-border { 100% { transform: rotate(360deg); } }
-    @keyframes sweep { 100% { left: 200%; } }
+    @keyframes shine { to { background-position: 200% center; } }
 
-    /* MENU WHATSAPP */
+    /* MENU WHATSAPP PERSONALIZADO */
     .menu-wpp {
-      margin-top: 40px;
+      margin-top: 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
     }
 
     .menu-wpp span {
-      font-size: 13px;
-      color: #777;
+      font-size: 14px;
+      color: #888;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 600;
-    }
-
-    .btn-wpp-header {
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      color: #fff;
-      padding: 14px 35px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      border: 1px solid rgba(255,255,255,0.1);
       letter-spacing: 1px;
     }
 
+    .btn-wpp-header {
+      background: #25d366;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
     .btn-wpp-header:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+      transform: scale(1.05);
+      background: #20ba5a;
     }
 
     /* HERO */
     .hero {
       text-align: center;
-      padding: 40px 20px 60px;
+      padding: 30px 20px 50px;
       max-width: 900px;
       margin: auto;
     }
 
-    .hero h1 { font-size: clamp(24px, 6vw, 38px); font-weight: 800; color: #fff; line-height: 1.1; }
-    .hero p { margin-top: 20px; font-size: clamp(16px, 4vw, 20px); color: #888; letter-spacing: 0.5px; }
-    .hero strong { color: var(--gold); text-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+    .hero h1 { font-size: clamp(22px, 6vw, 34px); font-weight: 800; color: #fff; line-height: 1.2; }
+    .hero p { margin-top: 15px; font-size: 18px; color: #ccc; }
+    .hero strong { color: var(--gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
 
     /* GRID DE JOGOS */
     .games {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px 100px;
+      padding: 0 20px 80px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 30px;
+      gap: 25px;
     }
 
     .card {
-      background: #080808;
-      border-radius: 4px;
+      background: #0a0a0a;
+      border-radius: 12px;
       overflow: hidden;
-      border: 1px solid #151515;
+      border: 1px solid #1a1a1a;
       transition: 0.4s;
     }
 
     .card:hover {
       transform: translateY(-10px);
       border-color: var(--gold);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
     }
 
     .card img { width: 100%; aspect-ratio: 2/3; object-fit: cover; }
-    .card h3 { padding: 15px; font-size: 0.85rem; text-align: center; color: #ddd; font-weight: 600; }
+
+    .card h3 { padding: 15px; font-size: 0.9rem; text-align: center; color: #eee; }
 
     .buy {
       display: block;
       margin: 0 15px 20px;
       padding: 12px;
       text-align: center;
+      border-radius: 6px;
       background: var(--gold);
       color: #000;
       font-weight: 800;
       text-decoration: none;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       transition: 0.3s;
-      border-radius: 2px;
     }
 
-    .buy:hover { background: #fff; transform: scale(1.02); }
+    .buy:hover { background: #fff; }
 
     /* NOTIFICAÇÃO */
     #fake-sale {
       position: fixed;
-      bottom: 25px;
-      left: 25px;
-      background: #0f0f0f;
-      padding: 15px 25px;
-      border-radius: 2px;
+      bottom: 20px;
+      left: 30px;
+      background: rgba(10, 10, 10, 0.98);
+      padding: 15px 20px;
+      border-radius: 8px;
       font-size: 13px;
-      border-left: 3px solid var(--gold);
+      border-left: 4px solid var(--gold);
       box-shadow: 0 10px 40px rgba(0,0,0,0.8);
       display: none;
       z-index: 10000;
-      border: 1px solid rgba(255,255,255,0.05);
     }
 
     @media (max-width: 768px) {
-      .games { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+      .games { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
       #fake-sale { left: 50%; transform: translateX(-50%); width: 90%; }
-      .mountain-bg { font-size: 120px; }
     }
   </style>
 </head>
@@ -261,16 +237,14 @@
 
 <div class="bg">
   <div class="top-bar">
-    <span><i class="fa-solid fa-bolt"></i> Entrega Imediata</span>
-    <span style="margin-left: 25px;"><i class="fa-solid fa-shield-check"></i> Garantia Vitalícia</span>
+    <span><i class="fa-solid fa-bolt"></i> Entrega Digital Imediata</span>
+    <span style="margin-left: 20px;"><i class="fa-solid fa-shield-check"></i> Garantia Vitalícia</span>
   </div>
 
   <header>
     <div class="logo-container">
       <div class="mountain-bg"><i class="fa-solid fa-mountain"></i></div>
-      
       <div class="logo-box">
-        <div class="inner-dark"></div>
         <div class="logo">Everest Keys</div>
       </div>
     </div>
@@ -278,7 +252,7 @@
     <div class="menu-wpp">
       <span>Não achou o jogo que você queria?</span>
       <a href="https://wa.me/5562982553620" class="btn-wpp-header" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i> CHAMAR NO WHATSAPP
+        <i class="fa-brands fa-whatsapp"></i> NOS CHAME NO WHATSAPP
       </a>
     </div>
   </header>
@@ -341,12 +315,493 @@ function mostrarFake(){
   const box = document.getElementById("fake-sale");
   const text = document.getElementById("fake-text");
 
-  text.innerHTML = `🔥 <strong>${nome}</strong> resgatou <strong>${jogo}</strong> na conta Steam!`;
+  text.innerHTML = `✅ <strong>${nome}</strong> resgatou <strong>${jogo}</strong> na conta Steam!`;
   box.style.display = "block";
-  setTimeout(() => { box.style.display = "none"; }, 4500);
+  setTimeout(() => { box.style.display = "none"; }, 4000);
 }
-setInterval(mostrarFake, 12000);
+setInterval(mostrarFake, 10000);
 </script>
 
 </body>
-</html>
+</html><style>
+body{
+  margin:0;
+  background:radial-gradient(circle at top,#111,#000 70%);
+  font-family:'Poppins',Arial,sans-serif;
+  color:#fff;
+}
+
+.games{
+  max-width:1400px;
+  margin:auto;
+  padding:40px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:linear-gradient(145deg,#0d0d0d,#161616);
+  border-radius:20px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 25px 50px rgba(0,0,0,.8);
+  transform-style:preserve-3d;
+  transition:.4s ease;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:20px;
+  border:1px solid rgba(212,175,55,.45);
+  pointer-events:none;
+}
+
+.card:hover{
+  transform:translateY(-12px) rotateX(6deg);
+  box-shadow:0 35px 80px rgba(212,175,55,.35);
+}
+
+.card img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  background:#000;
+}
+
+.card h3{
+  padding:12px;
+  font-size:.95rem;
+  min-height:48px;
+  text-align:center;
+}
+
+.buy{
+  display:block;
+  margin:0 15px 18px;
+  padding:12px;
+  text-align:center;
+  border-radius:30px;
+  background:linear-gradient(135deg,#d4af37,#f5d76e);
+  color:#000;
+  font-weight:700;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.buy:hover{
+  transform:scale(1.06);
+  box-shadow:0 0 25px rgba(212,175,55,.8);
+}
+</style>
+<section class="games">
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/813780/library_600x900.jpg">
+<h3>Age of Empires II: Definitive Edition</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Age%20of%20Empires%20II">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/2399830/library_600x900.jpg">
+<h3>ARK: Survival Ascended</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20ARK%20Survival%20Ascended">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/244210/library_600x900.jpg">
+<h3>Assetto Corsa</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Assetto%20Corsa">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1086940/library_600x900.jpg">
+<h3>Baldur's Gate 3</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Baldurs%20Gate%203">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/284160/library_600x900.jpg">
+<h3>BeamNG.drive</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20BeamNG.drive">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/397540/library_600x900.jpg">
+<h3>Borderlands 3</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Borderlands%203">Comprar por R$19,90</a>
+</div>
+
+</section><section class="games">
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/255710/library_600x900.jpg">
+<h3>Cities: Skylines</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Cities%20Skylines">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/949230/library_600x900.jpg">
+<h3>Cities: Skylines II</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Cities%20Skylines%20II">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1091500/library_600x900.jpg">
+<h3>Cyberpunk 2077</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Cyberpunk%202077">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/570940/library_600x900.jpg">
+<h3>DARK SOULS™: REMASTERED</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Dark%20Souls%20Remastered">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/335300/library_600x900.jpg">
+<h3>DARK SOULS™ II</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Dark%20Souls%20II">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/374320/library_600x900.jpg">
+<h3>DARK SOULS™ III</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Dark%20Souls%20III">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1868140/library_600x900.jpg">
+<h3>DAVE THE DIVER</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Dave%20the%20Diver">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1259420/library_600x900.jpg">
+<h3>Days Gone</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Days%20Gone">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/588650/library_600x900.jpg">
+<h3>Dead Cells</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Dead%20Cells">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/601150/library_600x900.jpg">
+<h3>Devil May Cry 5</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Devil%20May%20Cry%205">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/534380/library_600x900.jpg">
+<h3>Dying Light</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Dying%20Light">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/534380/library_600x900.jpg">
+<h3>Dying Light 2 Stay Human</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Dying%20Light%202">Comprar por R$19,90</a>
+</div>
+
+</section><section class="games">
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1245620/library_600x900.jpg">
+<h3>Elden Ring</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Elden%20Ring">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1203620/library_600x900.jpg">
+<h3>Elden Ring Nightreign</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Elden%20Ring%20Nightreign">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1201400/library_600x900.jpg">
+<h3>Enshrouded</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Enshrouded">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/227300/library_600x900.jpg">
+<h3>Euro Truck Simulator 2</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Euro%20Truck%20Simulator%202">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/427520/library_600x900.jpg">
+<h3>Factorio</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Factorio">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1248130/library_600x900.jpg">
+<h3>Farming Simulator 22</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Farming%20Simulator%2022">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/377160/library_600x900.jpg">
+<h3>Fallout 4</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Fallout%204">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1293830/library_600x900.jpg">
+<h3>Forza Horizon 4</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Forza%20Horizon%204">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1551360/library_600x900.jpg">
+<h3>Forza Horizon 5</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Forza%20Horizon%205">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/2215430/library_600x900.jpg">
+<h3>Ghost of Tsushima</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Ghost%20of%20Tsushima">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1593500/library_600x900.jpg">
+<h3>God of War</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20God%20of%20War">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/2322010/library_600x900.jpg">
+<h3>God of War Ragnarök</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20God%20of%20War%20Ragnarok">Comprar por R$19,90</a>
+</div>
+
+</section><section class="games">
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/367520/library_600x900.jpg">
+<h3>Hollow Knight</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Hollow%20Knight">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1426210/library_600x900.jpg">
+<h3>It Takes Two</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20It%20Takes%20Two">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/379430/library_600x900.jpg">
+<h3>Kingdom Come: Deliverance</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Kingdom%20Come%20Deliverance">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1627720/library_600x900.jpg">
+<h3>Kingdom Come: Deliverance II</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Kingdom%20Come%20Deliverance%20II">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1627720/library_600x900.jpg">
+<h3>Lies of P</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Lies%20of%20P">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1817190/library_600x900.jpg">
+<h3>Marvel’s Spider-Man Remastered</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Spider-Man%20Remastered">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1817070/library_600x900.jpg">
+<h3>Marvel’s Spider-Man: Miles Morales</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Spider-Man%20Miles%20Morales">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/582010/library_600x900.jpg">
+<h3>Monster Hunter: World</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Monster%20Hunter%20World">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/976310/library_600x900.jpg">
+<h3>Mortal Kombat 11</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Mortal%20Kombat%2011">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/275850/library_600x900.jpg">
+<h3>No Man's Sky</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20No%20Man%27s%20Sky">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1623730/library_600x900.jpg">
+<h3>Palworld</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Palworld">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/108600/library_600x900.jpg">
+<h3>Project Zomboid</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Project%20Zomboid">Comprar por R$19,90</a>
+</div>
+
+</section><section class="games">
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/648800/library_600x900.jpg">
+<h3>Raft</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Raft">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1174180/library_600x900.jpg">
+<h3>Red Dead Redemption 2</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Red%20Dead%20Redemption%202">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1694420/library_600x900.jpg">
+<h3>Red Dead Redemption</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Red%20Dead%20Redemption">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/339340/library_600x900.jpg">
+<h3>Resident Evil 0</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Resident%20Evil%200">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/883710/library_600x900.jpg">
+<h3>Resident Evil 2</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Resident%20Evil%202">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/952060/library_600x900.jpg">
+<h3>Resident Evil 3</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Resident%20Evil%203">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/21690/library_600x900.jpg">
+<h3>Resident Evil 5</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Resident%20Evil%205">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/221040/library_600x900.jpg">
+<h3>Resident Evil 6</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Resident%20Evil%206">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/418370/library_600x900.jpg">
+<h3>Resident Evil 7 Biohazard</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Resident%20Evil%207">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1196590/library_600x900.jpg">
+<h3>Resident Evil Village</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Resident%20Evil%20Village">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/294100/library_600x900.jpg">
+<h3>RimWorld</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20RimWorld">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/526870/library_600x900.jpg">
+<h3>Satisfactory</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Satisfactory">Comprar por R$19,90</a>
+</div>
+
+</section><section class="games">
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/814380/library_600x900.jpg">
+<h3>Sekiro™: Shadows Die Twice - GOTY Edition</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Sekiro%20Shadows%20Die%20Twice">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/750920/library_600x900.jpg">
+<h3>Shadow of the Tomb Raider: Definitive Edition</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Shadow%20of%20the%20Tomb%20Raider">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/741140/library_600x900.jpg">
+<h3>Sid Meier's Civilization® V</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Civilization%20V">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/646570/library_600x900.jpg">
+<h3>Slay the Spire</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Slay%20the%20Spire">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1328670/library_600x900.jpg">
+<h3>Sons of the Forest</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Sons%20of%20the%20Forest">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/413150/library_600x900.jpg">
+<h3>Stardew Valley</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Stardew%20Valley">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1778820/library_600x900.jpg">
+<h3>Tekken 8</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Tekken%208">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/105600/library_600x900.jpg">
+<h3>Terraria</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Terraria">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/292030/library_600x900.jpg">
+<h3>The Witcher 3: Wild Hunt</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20The%20Witcher%203">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/1888930/library_600x900.jpg">
+<h3>The Last of Us™ Part I</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20The%20Last%20of%20Us%20Part%20I">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/2547000/library_600x900.jpg">
+<h3>The Last of Us™ Part II Remastered</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20The%20Last%20of%20Us%20Part%20II">Comprar por R$19,90</a>
+</div>
+
+<div class="card">
+<img src="https://steamcdn-a.akamaihd.net/steam/apps/431960/library_600x900.jpg">
+<h3>Wallpaper Engine</h3>
+<a class="buy" href="https://wa.me/5562982553620?text=Quero%20comprar%20Wallpaper%20Engine">Comprar por R$19,90</a>
+</div>
+
+</section>
