@@ -15,25 +15,29 @@
       --gold-dark: #aa771c;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background: #000; color: #fff; overflow-x: hidden; cursor: default; }
+    .bg { background: radial-gradient(circle at top, #1a1a1a, #000 80%); min-height: 100vh; }
+
+    /* ESTILO DAS PARTÍCULAS DO MOUSE */
+    .particle {
+      position: fixed;
+      top: 0; left: 0;
+      width: 4px;
+      height: 4px;
+      background: var(--gold-light);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      box-shadow: 0 0 10px var(--gold);
+      animation: fadeOut 1s forwards;
     }
 
-    body {
-      background: #000;
-      color: #fff;
-      overflow-x: hidden;
+    @keyframes fadeOut {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.2) translateY(20px); }
     }
 
-    .bg {
-      background: radial-gradient(circle at top, #1a1a1a, #000 80%);
-      min-height: 100vh;
-    }
-
-    /* TOPO */
     .top-bar {
       text-align: center;
       padding: 8px;
@@ -43,193 +47,103 @@
       text-transform: uppercase;
       letter-spacing: 2px;
     }
-
     .top-bar i { color: var(--gold); }
 
-    /* HEADER & LOGO 3D ESTILIZADA */
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
-    }
+    /* --- CUSTOMIZAÇÃO DO NOME --- */
+    header { text-align: center; padding: 80px 20px 40px; }
 
     .logo-container {
       position: relative;
       display: inline-block;
-      padding: 40px;
-      perspective: 1000px; /* Efeito 3D */
+      padding: 20px 0;
     }
 
-    /* Montanha de Fundo */
     .mountain-bg {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 160px;
-      color: rgba(255, 255, 255, 0.03);
-      z-index: 0;
-      filter: blur(2px);
-    }
-
-    .logo-box {
-      position: relative;
-      padding: 25px 50px;
-      background: rgba(5, 5, 5, 0.9);
-      border-radius: 4px;
-      z-index: 1;
-      overflow: hidden;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 0 50px rgba(0,0,0,1);
-    }
-
-    /* Linhas Douradas Giratórias */
-    .logo-box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(transparent, transparent, var(--gold), transparent);
-      animation: rotate-border 4s linear infinite;
-      z-index: -1;
-    }
-
-    .logo-box::after {
-      content: '';
-      position: absolute;
-      inset: 2px;
-      background: #000;
-      border-radius: 2px;
-      z-index: -1;
-    }
-
-    .logo {
-      font-size: clamp(28px, 10vw, 45px);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 8px;
-      background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-size: clamp(120px, 20vw, 200px);
+      background: linear-gradient(to bottom, #222, transparent);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-size: 200% auto;
-      animation: shine 3s infinite linear;
+      z-index: 0; opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .logo-wrapper {
       position: relative;
+      padding: 20px 0;
+      z-index: 2;
     }
 
-    @keyframes rotate-border { 100% { transform: rotate(360deg); } }
-    @keyframes shine { to { background-position: 200% center; } }
-
-    /* MENU WHATSAPP PERSONALIZADO */
-    .menu-wpp {
-      margin-top: 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+    .line-glow {
+      position: absolute;
+      left: 0; width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+      background-size: 200% 100%;
     }
+    .line-top { top: 0; animation: moveLine 3s linear infinite; }
+    .line-bottom { bottom: 0; animation: moveLine 3s linear infinite reverse; }
 
-    .menu-wpp span {
-      font-size: 14px;
-      color: #888;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .btn-wpp-header {
-      background: #25d366;
-      color: #fff;
-      padding: 12px 25px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: 0.3s;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-    }
-
-    .btn-wpp-header:hover {
-      transform: scale(1.05);
-      background: #20ba5a;
-    }
-
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 30px 20px 50px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .hero h1 { font-size: clamp(22px, 6vw, 34px); font-weight: 800; color: #fff; line-height: 1.2; }
-    .hero p { margin-top: 15px; font-size: 18px; color: #ccc; }
-    .hero strong { color: var(--gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
-
-    /* GRID DE JOGOS */
-    .games {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px 80px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: #0a0a0a;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #1a1a1a;
-      transition: 0.4s;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      border-color: var(--gold);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-    }
-
-    .card img { width: 100%; aspect-ratio: 2/3; object-fit: cover; }
-
-    .card h3 { padding: 15px; font-size: 0.9rem; text-align: center; color: #eee; }
-
-    .buy {
-      display: block;
-      margin: 0 15px 20px;
-      padding: 12px;
-      text-align: center;
-      border-radius: 6px;
-      background: var(--gold);
-      color: #000;
+    .logo {
+      font-size: clamp(35px, 12vw, 60px);
       font-weight: 800;
-      text-decoration: none;
-      font-size: 0.8rem;
-      transition: 0.3s;
+      text-transform: uppercase;
+      letter-spacing: clamp(8px, 2vw, 15px);
+      background: linear-gradient(90deg, #aa771c, #fcf6ba, #aa771c, #fcf6ba, #aa771c);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShine 4s linear infinite;
+      filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
     }
 
+    @keyframes moveLine {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    @keyframes textShine {
+      to { background-position: 200% center; }
+    }
+
+    /* --- RESTO DO SITE --- */
+    .menu-wpp { margin-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+    .menu-wpp span { font-size: 13px; color: #777; text-transform: uppercase; letter-spacing: 2px; }
+    .btn-wpp-header {
+      background: linear-gradient(135deg, #25d366, #128c7e); color: #fff;
+      padding: 14px 35px; border-radius: 4px; text-decoration: none; font-weight: 800;
+      font-size: 13px; display: flex; align-items: center; gap: 12px; transition: 0.4s;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .btn-wpp-header:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); }
+
+    .hero { text-align: center; padding: 40px 20px 60px; max-width: 900px; margin: auto; }
+    .hero h1 { font-size: clamp(24px, 6vw, 38px); font-weight: 800; }
+    .hero strong { color: var(--gold); }
+
+    .games {
+      max-width: 1200px; margin: 0 auto; padding: 0 20px 100px;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 30px;
+    }
+    .card { background: #080808; border-radius: 4px; overflow: hidden; border: 1px solid #151515; transition: 0.4s; }
+    .card:hover { transform: translateY(-10px); border-color: var(--gold); }
+    .card img { width: 100%; aspect-ratio: 2/3; object-fit: cover; }
+    .card h3 { padding: 15px; font-size: 0.85rem; text-align: center; }
+    .buy {
+      display: block; margin: 0 15px 20px; padding: 12px; text-align: center;
+      background: var(--gold); color: #000; font-weight: 800; text-decoration: none;
+      font-size: 0.75rem; border-radius: 2px; transition: 0.3s;
+    }
     .buy:hover { background: #fff; }
 
-    /* NOTIFICAÇÃO */
     #fake-sale {
-      position: fixed;
-      bottom: 20px;
-      left: 30px;
-      background: rgba(10, 10, 10, 0.98);
-      padding: 15px 20px;
-      border-radius: 8px;
-      font-size: 13px;
-      border-left: 4px solid var(--gold);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-      display: none;
-      z-index: 10000;
+      position: fixed; bottom: 25px; left: 25px; background: #0f0f0f;
+      padding: 15px 25px; border-radius: 2px; font-size: 13px;
+      border-left: 3px solid var(--gold); box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      display: none; z-index: 10000;
     }
 
     @media (max-width: 768px) {
-      .games { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
-      #fake-sale { left: 50%; transform: translateX(-50%); width: 90%; }
+      .games { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
     }
   </style>
 </head>
@@ -237,22 +151,24 @@
 
 <div class="bg">
   <div class="top-bar">
-    <span><i class="fa-solid fa-bolt"></i> Entrega Digital Imediata</span>
-    <span style="margin-left: 20px;"><i class="fa-solid fa-shield-check"></i> Garantia Vitalícia</span>
+    <span><i class="fa-solid fa-bolt"></i> Entrega Imediata</span>
+    <span style="margin-left: 25px;"><i class="fa-solid fa-shield-check"></i> Garantia Vitalícia</span>
   </div>
 
   <header>
     <div class="logo-container">
       <div class="mountain-bg"><i class="fa-solid fa-mountain"></i></div>
-      <div class="logo-box">
+      <div class="logo-wrapper">
+        <div class="line-glow line-top"></div>
         <div class="logo">Everest Keys</div>
+        <div class="line-glow line-bottom"></div>
       </div>
     </div>
     
     <div class="menu-wpp">
       <span>Não achou o jogo que você queria?</span>
       <a href="https://wa.me/5562982553620" class="btn-wpp-header" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i> NOS CHAME NO WHATSAPP
+        <i class="fa-brands fa-whatsapp"></i> CHAMAR NO WHATSAPP
       </a>
     </div>
   </header>
@@ -268,35 +184,20 @@
       <h3>Red Dead Redemption 2</h3>
       <a class="buy" href="https://wa.me/5562982553620?text=Quero%20RDR2">ADQUIRIR AGORA</a>
     </div>
-
     <div class="card">
       <img src="https://steamcdn-a.akamaihd.net/steam/apps/1086940/library_600x900.jpg">
       <h3>Baldur's Gate 3</h3>
-      <a class="buy" href="https://wa.me/5562982553620?text=Quero%20Baldurs%20Gate%203">ADQUIRIR AGORA</a>
+      <a class="buy" href="https://wa.me/5562982553620?text=Quero%20BG3">ADQUIRIR AGORA</a>
     </div>
-
     <div class="card">
       <img src="https://steamcdn-a.akamaihd.net/steam/apps/1245620/library_600x900.jpg">
       <h3>Elden Ring</h3>
-      <a class="buy" href="https://wa.me/5562982553620?text=Quero%20Elden%20Ring">ADQUIRIR AGORA</a>
+      <a class="buy" href="https://wa.me/5562982553620?text=Quero%20EldenRing">ADQUIRIR AGORA</a>
     </div>
-
     <div class="card">
-      <img src="https://steamcdn-a.akamaihd.net/steam/apps/1817070/library_600x900.jpg">
-      <h3>Spider-Man Remastered</h3>
-      <a class="buy" href="https://wa.me/5562982553620?text=Quero%20Spider-Man">ADQUIRIR AGORA</a>
-    </div>
-
-    <div class="card">
-      <img src="https://steamcdn-a.akamaihd.net/steam/apps/2321470/library_600x900.jpg">
+      <img src="https://steamcdn-a.akamaihd.net/steam/apps/2322010/library_600x900.jpg">
       <h3>God of War Ragnarök</h3>
-      <a class="buy" href="https://wa.me/5562982553620?text=Quero%20God%20of%20War">ADQUIRIR AGORA</a>
-    </div>
-
-    <div class="card">
-      <img src="https://steamcdn-a.akamaihd.net/steam/apps/1091500/library_600x900.jpg">
-      <h3>Cyberpunk 2077</h3>
-      <a class="buy" href="https://wa.me/5562982553620?text=Quero%20Cyberpunk">ADQUIRIR AGORA</a>
+      <a class="buy" href="https://wa.me/5562982553620?text=Quero%20GOW">ADQUIRIR AGORA</a>
     </div>
   </section>
 </div>
@@ -306,20 +207,43 @@
 </div>
 
 <script>
-const nomes = ["Marcos", "Lucas", "Tiago", "Felipe", "Ricardo", "Bruno", "Vinícius", "Gabriel", "Rodrigo"];
-const jogos = ["GTA V", "Red Dead 2", "Elden Ring", "God of War", "Cyberpunk", "Spider-Man", "Baldur's Gate 3"];
+// --- SCRIPT DO MOUSE (PARTÍCULAS) ---
+document.addEventListener('mousemove', function(e) {
+  const container = document.body;
+  const particle = document.createElement('div');
+  particle.className = 'particle';
+  
+  // Posiciona a partícula onde o mouse está
+  particle.style.left = e.clientX + 'px';
+  particle.style.top = e.clientY + 'px';
+  
+  // Tamanho aleatório para variar o brilho
+  const size = Math.random() * 4 + 2 + 'px';
+  particle.style.width = size;
+  particle.style.height = size;
+
+  container.appendChild(particle);
+
+  // Remove o elemento após a animação acabar (1 segundo)
+  setTimeout(() => {
+    particle.remove();
+  }, 1000);
+});
+
+// --- SCRIPT DE VENDAS FAKES ---
+const nomes = ["Marcos", "Lucas", "Tiago", "Felipe", "Ricardo", "Bruno", "Vinícius", "Gabriel"];
+const jogos = ["GTA V", "Red Dead 2", "Elden Ring", "God of War", "Cyberpunk"];
 
 function mostrarFake(){
   const nome = nomes[Math.floor(Math.random()*nomes.length)];
   const jogo = jogos[Math.floor(Math.random()*jogos.length)];
   const box = document.getElementById("fake-sale");
   const text = document.getElementById("fake-text");
-
-  text.innerHTML = `✅ <strong>${nome}</strong> resgatou <strong>${jogo}</strong> na conta Steam!`;
+  text.innerHTML = `🔥 <strong>${nome}</strong> resgatou <strong>${jogo}</strong>!`;
   box.style.display = "block";
-  setTimeout(() => { box.style.display = "none"; }, 4000);
+  setTimeout(() => { box.style.display = "none"; }, 4500);
 }
-setInterval(mostrarFake, 10000);
+setInterval(mostrarFake, 12000);
 </script>
 
 </body>
